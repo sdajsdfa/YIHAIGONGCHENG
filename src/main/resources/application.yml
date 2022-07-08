@@ -1,0 +1,23 @@
+# 应用名称
+server:
+  port: 8090
+
+spring:
+  application:
+    name: payment-dome
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/yanhaiyun?serverTimezone=GMT
+      username: root
+      password: 123456
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #sql日志
+  mapper-locations: classpath:com/yhgc/api/mapper/xml/*.xml
+
+redis:
+  host: 127.0.0.1
+  post: 6379

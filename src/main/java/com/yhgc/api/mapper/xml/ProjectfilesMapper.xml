@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yhgc.api.mapper.ProjectfilesMapper">
+
+    <resultMap id="BaseResultMap" type="com.yhgc.api.entity.Projectfiles">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="unitId" column="unitId" jdbcType="BIGINT"/>
+        <result property="projectName" column="projectName" jdbcType="VARCHAR"/>
+        <result property="declareTime" column="declareTime" jdbcType="TIMESTAMP"/>
+        <result property="sectorName" column="sectorName" jdbcType="VARCHAR"/>
+        <result property="testMethod" column="testMethod" jdbcType="VARCHAR"/>
+        <result property="serialNo" column="serialNo" jdbcType="VARCHAR"/>
+        <result property="testCount" column="testCount" jdbcType="INTEGER"/>
+        <result property="accountName" column="accountName" jdbcType="VARCHAR"/>
+        <result property="reportId" column="reportId" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="dataId" column="dataId" jdbcType="BIGINT"/>
+        <result property="filename" column="fileName" jdbcType="VARCHAR"/>
+        <result property="pileNo" column="pileNo" jdbcType="VARCHAR"/>
+        <result property="dataStatus" column="dataStatus" jdbcType="INTEGER"/>
+        <result property="printStatus" column="printStatus" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,unitId,projectName,declareTime,
+        sectorName,testMethod,serialNo,
+        testCount,accountName,reportId,
+        status,dataId,fileName,
+        pileNo,dataStatus,printStatus
+    </sql>
+
+    <select id="queryProjectFileList" resultType="com.yhgc.api.entity.Projectfiles">
+        select <include refid="Base_Column_List" /> from projectfiles where unitId=#{unitId,jdbcType=BIGINT} ORDER BY declareTime desc
+    </select>
+</mapper>
